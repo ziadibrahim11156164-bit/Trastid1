@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة تحكم المشرف | BEBO STORE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* شاشة تسجيل الدخول المخصصة */
+        .login-overlay {
+            position: fixed;
+            inset: 0;
+            background: #080c14;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .login-card {
+            background: var(--bg-card);
+            border: 1px solid var(--cyan-main);
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.2);
+            border-radius: var(--radius);
+            padding: 32px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .admin-section { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: var(--radius); 
+            padding: 24px; 
+            margin-bottom: 24px; 
+        }
+        .admin-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin-top: 15px; 
+        }
+        .admin-table th, .admin-table td { 
+            padding: 12px; 
+            border: 1px solid var(--border-color); 
+            text-align: right; 
+            font-size: 14px; 
+        }
+        .admin-table th { 
+            background: #1e293b; 
+            color: var(--cyan-main); 
+        }
+        .danger-btn { 
+            background: #ef4444; 
+            color: #fff; 
+            border: none; 
+            padding: 6px 12px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+        }
+        .danger-btn:hover { 
+            background: #dc2626; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 🔒 شاشة تسجيل الدخول بحماية الباسورد -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-card">
+            <div class="logo" style="justify-content: center; margin-bottom: 16px;">
+                <img src="images/bebo-logo.jpg" alt="BEBO Logo" class="logo-img">
+            </div>
+            <h2 style="margin-bottom: 8px;">لوحة تحكم الأدمن</h2>
+            <p style="color: #94a3b8; font-size: 13px; margin-bottom: 20px;">الرجاء إدخال كلمة المرور للوصول إلى لوحة التحكم</p>
+            
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <input type="password" id="adminPasswordInput" placeholder="أدخل كلمة المرور هنا" required style="text-align: center; font-size: 16px;">
+                </div>
+                <p id="loginErrorMsg" style="color: #ef4444; font-size: 13px; display: none; margin-bottom: 12px;">كلمة المرور غير صحيحة!</p>
+                <button type="submit" class="btn btn-primary full-width"><i class="fa-solid fa-lock"></i> دخول لوحة التحكم</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 🛠️ محتوى لوحة التحكم (مخفي حتى تسجيل الدخول) -->
+    <div id="adminMainContent" style="display: none;">
+        <!-- الهيدر الخاص باللوحة -->
+        <header class="main-header">
+            <div class="container header-content">
+                <div class="logo">
+                    <img src="images/bebo-logo.jpg" alt="BEBO Logo" class="logo-img">
+                    <span class="brand-title">لوحة تحكم بيبو استور</span>
+                </div>
+                <div>
+                    <a href="index.html" class="btn btn-outline" style="margin-left: 8px;"><i class="fa-solid fa-store"></i> المتجر</a>
+                    <button class="btn danger-btn" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
+                </div>
+            </div>
+        </header>
+
+        <div class="container" style="padding-top: 40px; padding-bottom: 40px;">
+            <h2 class="section-title" style="margin-bottom: 30px;">إدارة المتجر والتحكم الشامل</h2>
+
+            <!-- 0. تغيير كلمة مرور الأدمن -->
+            <div class="admin-section">
+                <h3><i class="fa-solid fa-key"></i> تغيير كلمة مرور لوحة التحكم</h3>
+                <form id="changePassForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div class="form-group">
+                        <label>كلمة المرور الجديدة</label>
+                        <input type="password" id="newPassInput" placeholder="أدخل كلمة المرور الجديدة" required>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button type="submit" class="btn btn-secondary full-width">حفظ كلمة المرور الجديدة</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 1. إعدادات الموقع ورقم الواتساب -->
+            <div class="admin-section">
+                <h3><i class="fa-solid fa-gear"></i> إعدادات التواصل ورقم الواتساب</h3>
+                <form id="settingsForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div class="form-group">
+                        <label>رقم واتساب الأساسي (للطلبات)</label>
+                        <input type="text" id="adminWhatsapp" placeholder="مثال: 201003142035" required>
+                    </div>
+                    <div class="form-group">
+                        <label>نص الشريط العلوي المتحرك</label>
+                        <input type="text" id="adminTopBar" placeholder="⚡ الشحن الفوري متاح الآن..." required>
+                    </div>
+                    <div class="form-group" style="display: flex; align-items: flex-end;">
+                        <button type="submit" class="btn btn-primary full-width">حفظ الإعدادات</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 2. إضافة باقة أو عضوية جديدة -->
+            <div class="admin-section">
+                <h3><i class="fa-solid fa-plus-circle"></i> إضافة باقة أو عضوية جديدة للمتجر</h3>
+                <form id="addProductForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div class="form-group">
+                        <label>اسم الباقة</label>
+                        <input type="text" id="newProdName" placeholder="مثال: 1000 جوهرة" required>
+                    </div>
+                    <div class="form-group">
+                        <label>السعر (بالجنيه)</label>
+                        <input type="number" id="newProdPrice" placeholder="مثال: 500" required>
+                    </div>
+                    <div class="form-group">
+                        <label>الوسم (Tag)</label>
+                        <input type="text" id="newProdTag" placeholder="مثال: الأكثر طلباً / فوري">
+                    </div>
+                    <div class="form-group">
+                        <label>القسم</label>
+                        <select id="newProdCategory">
+                            <option value="id">شحن عن طريق ID</option>
+                            <option value="account">شحن بالحساب</option>
+                            <option value="membership">العضويات المستقلة</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <button type="submit" class="btn btn-primary">إضافة الباقة للمتجر فورا</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- 3. قائمة التعديل والحذف للباقات المعروضة -->
+            <div class="admin-section">
+                <h3><i class="fa-solid fa-list-check"></i> إدارة الباقات والعضويات المعروضة (تعديل / حذف)</h3>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>الباقة / العضوية</th>
+                                <th>السعر</th>
+                                <th>الوسم</th>
+                                <th>القسم</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminProductsTable">
+                            <!-- يتم التعبئة عبر JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 4. إضافة حسابات فري فاير للبيع (مع رفع الصور) -->
+            <div class="admin-section">
+                <h3><i class="fa-solid fa-gamepad"></i> إضافة حساب فري فاير للبيع</h3>
+                <form id="addAccountForm" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div class="form-group">
+                        <label>تفاصيل الحساب (المستوى / اللبس / الأسلحة)</label>
+                        <input type="text" id="accTitle" placeholder="مثال: حساب ليفل 70 سيزونات قديمة" required>
+                    </div>
+                    <div class="form-group">
+                        <label>السعر (بالجنيه)</label>
+                        <input type="number" id="accPrice" placeholder="مثال: 1200" required>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <label>صور الحساب (يمكنك اختيار أكثر من صورة)</label>
+                        <input type="file" id="accImagesInput" multiple accept="image/*" style="padding: 8px; background: #020617; width: 100%; border: 1px dashed var(--border-color); border-radius: 8px;">
+                        <div id="imagePreviewContainer" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;"></div>
+                    </div>
+                    <div class="form-group" style="grid-column: 1 / -1;">
+                        <button type="submit" class="btn btn-primary">نشر الحساب بالصور في المتجر</button>
+                    </div>
+                </form>
+
+                <div style="margin-top: 30px;">
+                    <h4>الحسابات المعروضة حالياً</h4>
+                    <div style="overflow-x: auto; margin-top: 10px;">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>الصور</th>
+                                    <th>تفاصيل الحساب</th>
+                                    <th>السعر</th>
+                                    <th>الإجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody id="adminAccountsTable">
+                                <!-- يتم التحميل عبر JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. إدارة آراء وتقييمات العملاء -->
+            <div class="admin-section">
+                <h3><i class="fa-solid fa-star"></i> إدارة تقييمات العملاء</h3>
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>التقييم</th>
+                                <th>التعليق</th>
+                                <th>الإجراء</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminReviewsTable">
+                            <!-- يتم التحميل عبر JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

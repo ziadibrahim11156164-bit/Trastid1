@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEPO STORE | بيبو استور - شحن فري فاير فورياً</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- الشريط العلوي -->
+    <div class="top-bar">
+        <span>⚡ الشحن الفوري متاح الآن · الدفع والتأكيد عبر واتساب</span>
+    </div>
+
+    <!-- الهيدر واللوجو -->
+    <header class="main-header">
+        <div class="container header-content">
+            <button class="icon-btn menu-toggle" id="openMenuBtn" aria-label="فتح القائمة"><i class="fa-solid fa-bars"></i></button>
+            <div class="logo">
+                <img src="images/bebo-logo.jpg" alt="BEBO STORE Logo" class="logo-img">
+                <div class="logo-text">
+                    <span class="brand-title">BEPO STORE</span>
+                    <span class="brand-sub">بيبو استور · شحن فري فاير</span>
+                </div>
+            </div>
+            <a href="admin.html" target="_blank" class="icon-btn login-btn" title="لوحة تحكم المشرف"><i class="fa-solid fa-user-shield"></i></a>
+        </div>
+    </header>
+
+    <!-- المجسم 3D العائم المتحرك عبر الشاشة -->
+    <div class="floating-mascot-3d" id="mascot3D" title="BEPO Mascot 3D">
+        <div class="mascot-inner">
+            <img src="images/bebo-logo.jpg" alt="BEPO Mascot 3D">
+            <div class="mascot-aura"></div>
+        </div>
+    </div>
+
+    <!-- القائمة الجانبية Drawer Menu -->
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+    <aside class="drawer" id="drawer">
+        <button class="close-btn" id="closeMenuBtn"><i class="fa-solid fa-xmark"></i></button>
+        <nav class="drawer-nav">
+            <a href="#hero" class="drawer-link active"><i class="fa-solid fa-house"></i> الرئيسية</a>
+            <a href="#id-charging" class="drawer-link"><i class="fa-solid fa-gem"></i> شحن عن طريق ID</a>
+            <a href="#account-charging" class="drawer-link"><i class="fa-solid fa-wallet"></i> أسعار جواهر الحساب</a>
+            <a href="#memberships" class="drawer-link"><i class="fa-solid fa-crown"></i> قسم العضويات المستقل</a>
+            <a href="#accounts" class="drawer-link"><i class="fa-solid fa-gamepad"></i> حسابات للبيع</a>
+            <a href="#reviews" class="drawer-link"><i class="fa-solid fa-star"></i> التقييمات</a>
+            <a href="admin.html" target="_blank" class="drawer-link admin-link"><i class="fa-solid fa-user-gear"></i> لوحة تحكم الأدمن</a>
+        </nav>
+    </aside>
+
+    <!-- الواجهة الرئيسية Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container hero-container">
+            <div class="hero-text-content">
+                <span class="badge"><i class="fa-solid fa-circle"></i> الشحن متاح الآن · Free Fire</span>
+                <h1 class="hero-title">شحن <span class="cyan-glow">فري فاير</span> بأسرع وقت</h1>
+                <h2 class="hero-subtitle">BEPO STORE – بيبو استور</h2>
+                <p class="hero-desc">شحن جواهر Free Fire عن طريق ID أو بالحساب، وباقات العضويات الخاصة وحسابات اللعبة للبيع — بسعر واضح وتسليم سريع.</p>
+                
+                <div class="hero-buttons">
+                    <a href="#id-charging" class="btn btn-primary"><i class="fa-solid fa-arrow-left"></i> شحن عن طريق ID</a>
+                    <a href="#account-charging" class="btn btn-secondary">شحن بالحساب</a>
+                </div>
+
+                <div class="whatsapp-cta">
+                    <a href="https://wa.me/201003142035" target="_blank" class="btn btn-outline"><i class="fa-brands fa-whatsapp"></i> تواصل واتساب</a>
+                </div>
+
+                <div class="trust-pills">
+                    <span class="pill"><i class="fa-solid fa-gem"></i> شحن جواهر فوري</span>
+                    <span class="pill"><i class="fa-solid fa-shield-halved"></i> طلب آمن بدون كلمات مرور</span>
+                    <span class="pill"><i class="fa-solid fa-users"></i> حسابات Free Fire موثوقة</span>
+                </div>
+            </div>
+
+            <!-- صورة BEBO الشخصية الرئيسية مع التأثير الضوئي -->
+            <div class="hero-media">
+                <div class="main-avatar-card">
+                    <img src="images/bebo-logo.jpg" alt="BEBO Main Avatar" class="hero-bebo-img">
+                    <div class="avatar-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. قسم شحن عن طريق ID -->
+    <section class="section" id="id-charging">
+        <div class="container">
+            <span class="section-tag">شحن عن طريق ID</span>
+            <h2 class="section-title">باقات جواهر فري فاير (عن طريق ID)</h2>
+            <p class="section-subtitle">شحن فورياً بمجرد إدخال ID اللاعب بدون كلمات مرور.</p>
+
+            <div class="grid-products" id="idProductsGrid">
+                <!-- يتم التحميل عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. قسم أسعار جواهر شحن الحساب (قسم مستقل) -->
+    <section class="section" id="account-charging">
+        <div class="container">
+            <span class="section-tag">الشحن بالحساب</span>
+            <h2 class="section-title">أسعار الجواهر (الشحن بالحساب)</h2>
+            <p class="section-subtitle">أسعار خاصة ومستقلة عند الشحن عبر بيانات الحساب.</p>
+
+            <div class="grid-products" id="accountProductsGrid">
+                <!-- يتم التحميل عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. قسم العضويات والعروض الخاصة (خانة مستقلة) -->
+    <section class="section memberships-standalone" id="memberships">
+        <div class="container">
+            <span class="section-tag">العضويات والأنواع</span>
+            <h2 class="section-title">العضويات والعروض الخاصة</h2>
+            <p class="section-subtitle">خانة خاصة ومستقلة تماماً لتفعيل كافة أنواع العضويات.</p>
+
+            <div class="grid-products" id="membershipsGrid">
+                <!-- يتم التحميل عبر JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- خطوات الطلب 01 - 04 -->
+    <section class="section steps-section">
+        <div class="container">
+            <span class="section-tag">خطوات الطلب</span>
+            <h2 class="section-title">اطلب في أربع خطوات فقط</h2>
+
+            <div class="grid-cards steps-grid">
+                <div class="card step-card">
+                    <span class="step-num">01</span>
+                    <div class="card-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <h3>اختر القسم والباقة</h3>
+                    <p>تصفح الباقات أو المنتجات واختر ما يناسبك.</p>
+                </div>
+
+                <div class="card step-card">
+                    <span class="step-num">02</span>
+                    <div class="card-icon"><i class="fa-solid fa-user-pen"></i></div>
+                    <h3>أدخل بيانات الطلب</h3>
+                    <p>ID اللاعب أو بيانات التواصل وطريقة الربط فقط.</p>
+                </div>
+
+                <div class="card step-card">
+                    <span class="step-num">03</span>
+                    <div class="card-icon"><i class="fa-solid fa-comments"></i></div>
+                    <h3>أكمل على واتساب</h3>
+                    <p>نفتح لك رسالة جاهزة تحتوي تفاصيل طلبك.</p>
+                </div>
+
+                <div class="card step-card">
+                    <span class="step-num">04</span>
+                    <div class="card-icon"><i class="fa-solid fa-box-open"></i></div>
+                    <h3>استلم الشحن</h3>
+                    <p>يتم التنفيذ فورًا بعد تأكيد الطلب والدفع.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- حسابات فري فاير للبيع -->
+    <section class="section" id="accounts">
+        <div class="container">
+            <span class="section-tag">حسابات Free Fire</span>
+            <h2 class="section-title">حسابات جاهزة للبيع</h2>
+            <div class="alert-box"><i class="fa-solid fa-shield-halved"></i> تُنشر الحسابات في المتجر بعد مراجعة المشرف فقط.</div>
+            <div class="empty-box"><p>لا توجد حسابات معروضة حاليًا، تابعنا قريبًا أو تواصل معنا عبر واتساب.</p></div>
+        </div>
+    </section>
+
+    <!-- تقييمات العملاء -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <span class="section-tag">آراء العملاء</span>
+            <h2 class="section-title">تقييمات وتجارب عملاء بيبو استور</h2>
+            <div class="reviews-list" id="reviewsContainer"></div>
+
+            <!-- نموذج إضافة تقييم -->
+            <div class="card review-form-card">
+                <h3>شاركنا تقييمك</h3>
+                <form id="addReviewForm">
+                    <div class="form-group">
+                        <label>الاسم</label>
+                        <input type="text" id="revName" placeholder="اسمك الكريم" required>
+                    </div>
+                    <div class="form-group">
+                        <label>التقييم بالنجوم</label>
+                        <div class="star-rating-input" id="starInput">
+                            <i class="fa-solid fa-star active" data-val="1"></i>
+                            <i class="fa-solid fa-star active" data-val="2"></i>
+                            <i class="fa-solid fa-star active" data-val="3"></i>
+                            <i class="fa-solid fa-star active" data-val="4"></i>
+                            <i class="fa-solid fa-star active" data-val="5"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>التعليق</label>
+                        <textarea id="revComment" rows="3" placeholder="اكتب تجربتك مع بيبو استور" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary full-width">إرسال التقييم للمراجعة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر Footer -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <img src="images/bebo-logo.jpg" alt="BEBO Footer Logo" class="logo-img">
+                    <span class="brand-title">BEBO STORE</span>
+                </div>
+                <p style="margin-top: 10px;">متجر بيبو استور لشحن جواهر Free Fire عن طريق ID أو بالحساب، وبيع حسابات اللعبة، مع دعم مباشر على واتساب.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>روابط سريعة</h4>
+                <ul>
+                    <li><a href="#hero">الرئيسية</a></li>
+                    <li><a href="#id-charging">شحن عن طريق ID</a></li>
+                    <li><a href="#account-charging">شحن بالحساب</a></li>
+                    <li><a href="#memberships">العضويات المستقلة</a></li>
+                    <li><a href="#reviews">تقييمات العملاء</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>تواصل معنا</h4>
+                <p><i class="fa-brands fa-whatsapp"></i> 01112511342</p>
+                <p><i class="fa-solid fa-phone"></i> 01112511342</p>
+                <small style="color: #94a3b8; display: block; margin-top: 6px;">لا نطلب كلمة مرور الحساب أو البريد الإلكتروني لشحن الـ ID.</small>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>© BEPO STORE 2026 – بيبو استور، جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <!-- زر الواتساب العائم -->
+    <a href="https://wa.me/201112511342" class="floating-whatsapp" target="_blank" title="تواصل عبر الواتساب"><i class="fa-brands fa-whatsapp"></i></a>
+
+    <!-- نافذة الطلب الشاملة (Modal) -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-card">
+            <button class="modal-close" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="modalTitle">إكمال طلب الشحن</h3>
+            <p id="modalSub" style="font-size: 13px; color: #94a3b8; margin-bottom: 16px;">أدخل بياناتك وسيتم توجيهك فوراً للواتساب لإتمام الطلب.</p>
+
+            <form id="checkoutForm">
+                <input type="hidden" id="itemTitle">
+                <input type="hidden" id="itemPrice">
+
+                <div class="form-group">
+                    <label>الاسم الكريم</label>
+                    <input type="text" id="custName" placeholder="مثال: أحمد محمد" required>
+                </div>
+                <div class="form-group" id="idInputGroup">
+                    <label>ID اللاعب في اللعبة</label>
+                    <input type="text" id="playerId" placeholder="أدخل ID اللاعب هنا">
+                </div>
+                <div class="form-group">
+                    <label>طريقة الدفع الفضلة</label>
+                    <select id="paymentMethod">
+                        <option value="فودافون كاش">فودافون كاش (Vodafone Cash)</option>
+                        <option value="انستا باي InstaPay">انستا باي InstaPay</option>
+                        <option value="أورنج كاش">أورنج كاش</option>
+                        <option value="اتصالات كاش">اتصالات كاش</option>
+                    </select>
+                </div>
+
+                <div class="modal-summary">
+                    <span>المبلغ المطلوب:</span>
+                    <strong class="cyan-glow" id="modalPrice">0 ج.م</strong>
+                </div>
+
+                <button type="submit" class="btn btn-primary full-width"><i class="fa-brands fa-whatsapp"></i> إرسال الطلب عبر الواتساب</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
